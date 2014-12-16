@@ -28,3 +28,14 @@ require 'pp'
 #   Jules Herzog
 #   Julia Hilll
 #   etc...
+
+require_relative 'curriculum'
+CURRICULUM[:units].each do |unit|
+  unit[:lessons].each do |lesson|
+    lesson[:occurrences].each do |occurrence_key, occurrence_val|
+      occurrence_val[:comments].each do |comment|
+        puts comment[:user][:name]
+      end
+    end
+  end
+end

@@ -27,3 +27,17 @@ require 'pp'
 #       g4 on 2013-05-08 - 0
 #       g5 on 2013-06-08 - 0
 #       etc...
+require_relative 'curriculum'
+CURRICULUM[:units].each do |unit|
+  puts "  #{unit[:name]}"
+  unit[:lessons].each do |lesson|
+    puts "    #{lesson[:name]}"
+    lesson[:occurrences].each do |occurrence_key, occurrence_val|
+      count = 0
+      occurrence_val[:comments].each do |comment|
+        count += 1
+      end
+      puts "      #{occurrence_val[:cohort][:name]} on #{occurrence_key} - #{count}"
+    end
+  end
+end

@@ -20,3 +20,17 @@ require 'pp'
 #     Read - 1
 #     Update - 6
 #     Delete - 2
+
+require_relative 'curriculum'
+CURRICULUM[:units].each do |unit|
+  puts "  #{unit[:name]}"
+  unit[:lessons].each do |lesson|
+    count = 0
+    lesson[:occurrences].each do |occurrence_key, occurrence_val|
+      occurrence_val[:comments].each do |comment|
+        count += 1
+      end
+    end
+    puts "    #{lesson[:name]} - #{count}"
+  end
+end
